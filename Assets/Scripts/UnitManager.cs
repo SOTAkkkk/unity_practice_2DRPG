@@ -10,16 +10,17 @@ public class UnitManager : MonoBehaviour
     public int pt;
 
     // 攻撃関数
-    public void Attack(UnitManager unitManager)
+    public void Attack(UnitManager target)
     {
-        unitManager.Damage();
+        target.Damage(pt);
     }
 
     // ダメージ関数
-    void Damage()
+    void Damage(int damage)
     {
         hp -= 10;
-        Debug.Log(name + "は10ダメージを受けた");
+        Debug.Log(name + "は" + damage + "ダメージを受けた");
+        Debug.Log("体力は" + this.hp + "になった");
     }
 
 }
