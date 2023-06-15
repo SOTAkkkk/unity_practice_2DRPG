@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // 戦いを管理する
 // PlayerとEnemyを戦わせる
@@ -14,7 +15,14 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         player.Attack(enemy);
-        enemy.Attack(player);
+        if (enemy.hp > 0)
+        {
+            enemy.Attack(player);
+        }
+        else
+        {
+            BattleEnd();
+        }
 
     }
 
@@ -29,6 +37,13 @@ public class BattleManager : MonoBehaviour
     void EnemyTurn()
     {
         enemy.Attack(player);
+    }
+    void BattleEnd()
+    {
+        Debug.Log("対戦終了");
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
