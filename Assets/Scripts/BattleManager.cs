@@ -17,12 +17,18 @@ public class BattleManager : MonoBehaviour
         enemy.Attack(player);
 
     }
+
     // PlayerがEnemyに攻撃する
-    // EnemyがPlayerに攻撃する
-
-    // Update is called once per frame
-    void Update()
+    public void OnAttackButton()
     {
-
+        player.Attack(enemy);
+        EnemyTurn();
     }
+
+    // EnemyがPlayerに攻撃する
+    void EnemyTurn()
+    {
+        enemy.Attack(player);
+    }
+
 }
